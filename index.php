@@ -689,7 +689,7 @@ session_destroy(); // Ends the session
 								<div class="d-flex justify-content-center gap-2">
 									<!-- "View" button that links to the product details page -->
 									<a href="viewProduct.php?id=11" class="btn btn-info">View</a>
-									<a href="add_to_cart.php?id=11" class="btn btn-primary btn-sm">
+									<a href="cart.php?id=11" class="btn btn-primary btn-sm">
 										<i class="bi bi-cart"></i>
 									</a>
 									<!-- "Add to wishlist" button with heart icon -->
@@ -706,7 +706,7 @@ session_destroy(); // Ends the session
 							<div class="card-body">
 								<div class="d-flex justify-content-center gap-2">
 									<a href="viewProduct.php?id=14" class="btn btn-info">View</a>
-									<a href="add_to_cart.php?id=14" class="btn btn-primary btn-sm">
+									<a href="cart.php?id=14" class="btn btn-primary btn-sm">
 										<i class="bi bi-cart"></i>
 									</a>
 									<button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
@@ -721,7 +721,7 @@ session_destroy(); // Ends the session
 							<div class="card-body">
 								<div class="d-flex justify-content-center gap-2">
 									<a href="viewProduct.php?id=18" class="btn btn-info">View</a>
-									<a href="add_to_cart.php?id=18" class="btn btn-primary btn-sm">
+									<a href="cart.php?id=18" class="btn btn-primary btn-sm">
 										<i class="bi bi-cart"></i>
 									</a>
 									<button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
@@ -743,7 +743,7 @@ session_destroy(); // Ends the session
 							<div class="card-body">
 								<div class="d-flex justify-content-center gap-2">
 									<a href="viewProduct.php?id=15" class="btn btn-info">View</a>
-									<a href="add_to_cart.php?id=15" class="btn btn-primary btn-sm">
+									<a href="cart.php?id=15" class="btn btn-primary btn-sm">
 										<i class="bi bi-cart"></i>
 									</a>
 									<button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
@@ -758,7 +758,7 @@ session_destroy(); // Ends the session
 							<div class="card-body">
 								<div class="d-flex justify-content-center gap-2">
 									<a href="viewProduct.php?id=16" class="btn btn-info">View</a>
-									<a href="add_to_cart.php?id=16" class="btn btn-primary btn-sm">
+									<a href="cart.php" class="btn btn-primary btn-sm">
 										<i class="bi bi-cart"></i>
 									</a>
 									<button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
@@ -773,7 +773,7 @@ session_destroy(); // Ends the session
 							<div class="card-body">
 								<div class="d-flex justify-content-center gap-2">
 									<a href="viewProduct.php?id=1" class="btn btn-info">View</a>
-									<a href="addtocart.php?id=1" class="btn btn-primary btn-sm">
+									<a href="cart.php?id=1" class="btn btn-primary btn-sm">
 										<i class="bi bi-cart"></i>
 									</a>
 									<button class="btn btn-outline-danger btn-sm"><i class="bi bi-heart"></i></button>
