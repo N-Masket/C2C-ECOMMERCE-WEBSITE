@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -126,7 +127,7 @@
         </form>
 
         <!-- REGISTER FORM -->
-        <form id="registerForm" class="d-none" method="POST" action="auth.php">
+        <form id="registerForm" class="d-none" method="POST" action="auth.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>">
             <div class="mb-3">
                 <label for="regName" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="regName" name="fullname" required placeholder="Jane Doe" />

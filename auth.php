@@ -1,9 +1,4 @@
 <?php
-// Enable error reporting for development
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 include('Database/dbConnection.php');
 session_start();
 
@@ -63,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // --- Login Logic ---
+    // Login Logic 
     elseif (isset($_POST['loginForm'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
