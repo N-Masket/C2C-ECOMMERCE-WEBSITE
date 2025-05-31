@@ -130,7 +130,7 @@
         <form id="registerForm" class="d-none" method="POST" action="auth.php<?php echo isset($_GET['redirect']) ? '?redirect=' . urlencode($_GET['redirect']) : ''; ?>">
             <div class="mb-3">
                 <label for="regName" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="regName" name="fullname" required placeholder="Jane Doe" />
+                <input type="text" class="form-control" id="regName" name="fullname" required placeholder="Mary Jane" />
             </div>
             <div class="mb-3">
                 <label for="regEmail" class="form-label">Email address</label>
@@ -150,28 +150,31 @@
     </div>
 
     <script>
+        // Switch between login and register forms
         function switchTab(tab) {
-            const loginForm = document.getElementById("loginForm");
-            const registerForm = document.getElementById("registerForm");
-            const tabs = document.querySelectorAll(".tab-btn");
+            const loginForm = document.getElementById("loginForm"); // Get login form element
+            const registerForm = document.getElementById("registerForm"); // Get register form element
+            const tabs = document.querySelectorAll(".tab-btn"); // Get tab buttons
 
             if (tab === "login") {
-                loginForm.classList.remove("d-none");
-                registerForm.classList.add("d-none");
-                tabs[0].classList.add("active");
-                tabs[1].classList.remove("active");
+                loginForm.classList.remove("d-none"); // Show login form
+                registerForm.classList.add("d-none"); // Hide register form
+                tabs[0].classList.add("active"); // Highlight login tab
+                tabs[1].classList.remove("active"); // Unhighlight register tab
             } else {
-                registerForm.classList.remove("d-none");
-                loginForm.classList.add("d-none");
-                tabs[1].classList.add("active");
-                tabs[0].classList.remove("active");
+                registerForm.classList.remove("d-none"); // Show register form
+                loginForm.classList.add("d-none"); // Hide login form
+                tabs[1].classList.add("active"); // Highlight register tab
+                tabs[0].classList.remove("active"); // Unhighlight login tab
             }
         }
 
+        // Toggle dark mode on the page
         function toggleDarkMode() {
-            document.body.classList.toggle("dark-mode");
+            document.body.classList.toggle("dark-mode"); // Add or remove dark-mode class on body
         }
     </script>
+
 
 </body>
 
