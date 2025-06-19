@@ -1,0 +1,224 @@
+/* Maiin styling */
+:root {
+  --primary-color: #7a2e88;
+  --secondary-color: #f8f9fa;
+  --dark-bg: #121212;
+  --light-text: #ffffff;
+}
+
+body {
+  background-color: whitesmoke;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+}
+.btn-outline-dark i,
+.btn-outline-light i {
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn-outline-dark:hover i,
+.btn-outline-light:hover i {
+  transform: rotate(20deg);
+}
+
+/* Navbar Styles */
+.navbar {
+  transition: all 0.3s ease-in-out;
+  background-color: #7a2e88 !important;
+}
+
+.navbar-brand {
+  font-size: 32px;
+  font-weight: bolder;
+  color: white !important;
+}
+
+.navbar-dark-mode {
+  background-color: #1f1f1f !important;
+}
+
+.navbar .nav-link,
+.navbar,
+.navbar i {
+  color: white !important;
+  font-size: 15px;
+  font-weight: bolder;
+}
+
+.dark-toggle {
+  cursor: pointer;
+}
+
+#google_translate_element select {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 5px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+#google_translate_element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero-carousel-section {
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .hero-slide {
+    text-align: center;
+    background-attachment: scroll;
+  }
+}
+
+.hero-slide {
+  min-height: 70vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-btn {
+  transition: all 0.4s ease;
+  font-weight: 600;
+}
+
+.hero-btn:hover {
+  background-color: #0d6efd;
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/*footer  section */
+.footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem 0;
+}
+
+.footer a {
+  color: #f0e6ff;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Sidebar Styles */
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+  transition: all 0.3s;
+}
+
+#sidebar .sidebar-header {
+  background: #343a40;
+  color: #fff;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+}
+
+#sidebar ul li {
+  padding: 10px;
+  font-size: 1.1em;
+}
+
+#sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  background: #495057;
+  border-radius: 5px;
+}
+
+/* Page Content */
+#page-content-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+/* Toggle Button */
+#menu-toggle {
+  margin-left: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+}
