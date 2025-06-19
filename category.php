@@ -86,6 +86,12 @@
             text-align: center;
         }
 
+        .product-card .card-body {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
         .category-icon {
             font-size: 1.8rem;
             color: #007bff;
@@ -158,8 +164,6 @@
 
             <?php
             include('Database/dbConnection.php');
-
-
             // Initialize variables
             $search = isset($_GET['search']) ? $conn->real_escape_string($_GET['search']) : '';
             $category_id = isset($_GET['category_id']) ? intval($_GET['category_id']) : 0;
@@ -207,17 +211,18 @@
                         $imagePath = $imgRow && !empty($imgRow['image_path']) ? 'Seller/' . $imgRow['image_path'] : 'images/default.jpg';
                 ?>
 
-                        <div class='col-md-3 mb-4'>
-                            <div class='card product-card shadow-sm'>
+                        <div class='col-6 col-md-3 mb-4'>
+                            <div class='card product-card shadow-sm h-100 d-flex flex-column'>
                                 <img src="<?= htmlspecialchars($imagePath) ?>" class='card-img-top' alt="<?= htmlspecialchars($row['product_name']) ?>"
                                     onerror="this.onerror=null; this.src='images/default.jpg';">
-                                <div class='card-body'>
+                                <div class='card-body d-flex flex-column'>
                                     <h5 class='card-title text-truncate'><?= htmlspecialchars($row['product_name']) ?></h5>
                                     <p class='card-text'>R<?= htmlspecialchars($row['price']) ?></p>
-                                    <a href='viewProduct.php?id=<?= $row['product_id'] ?>' class='btn btn-primary btn-sm'>View</a>
+                                    <a href='viewProduct.php?id=<?= $row['product_id'] ?>' class='btn btn-primary btn-sm mt-auto'>View</a>
                                 </div>
                             </div>
                         </div>
+
 
                 <?php
                     }
