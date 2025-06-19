@@ -4,8 +4,6 @@ $slides = $conn->query("SELECT * FROM slides ORDER BY order_number ASC");
 session_start();
 session_unset(); // Clears session variables
 session_destroy(); // Ends the session
-// Fetch the trending banner settings from DB
-
 ?>
 
 <!DOCTYPE html>
@@ -16,81 +14,26 @@ session_destroy(); // Ends the session
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Shopelle</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap"
 		rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-MB5H8K5E1H"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
-	<!--Function triggers translation -->
-	<script type="text/javascript">
-		function googleTranslateElementInit() {
-			new google.translate.TranslateElement({
-				pageLanguage: 'en',
-				includedLanguages: 'af,en,zu,xh,st,tn,nso,ve,ts,nr,ss',
-				layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-			}, 'google_translate_element');
+		function gtag() {
+			dataLayer.push(arguments);
 		}
+		gtag('js', new Date());
+
+		gtag('config', 'G-MB5H8K5E1H');
 	</script>
-	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 	<style>
-		:root {
-			--primary-color: #7a2e88;
-			--secondary-color: #f8f9fa;
-			--dark-bg: #121212;
-			--light-text: #ffffff;
-		}
-
-		body {
-			background-color: whitesmoke;
-			transition: background-color 0.3s, color 0.3s;
-		}
-
-		.dark-mode {
-			background-color: var(--dark-bg);
-			color: var(--light-text);
-		}
-
-		.navbar {
-			transition: all 0.3s ease-in-out;
-			background-color: #7a2e88;
-		}
-
-		.navbar-brand {
-			font-size: 2rem;
-			font-weight: bold;
-			color: #1A355B;
-		}
-
-		.navbar-dark-mode {
-			background-color: #1f1f1f !important;
-		}
-
-		.btn-outline-dark i,
-		.btn-outline-light i {
-			transition: transform 0.2s ease-in-out;
-		}
-
-		.btn-outline-dark:hover i,
-		.btn-outline-light:hover i {
-			transform: rotate(20deg);
-		}
-
-		.navbar .nav-link,
-		.navbar,
-		.navbar i {
-			color: white !important;
-			font-size: 15px;
-			font-weight: bolder;
-		}
-
-		.navbar-brand {
-			font-size: 30px;
-			font-weight: bolder;
-			color: white !important;
-		}
-
 		/*search bar*/
 		.search-bar {
 			display: flex;
@@ -124,68 +67,6 @@ session_destroy(); // Ends the session
 		.category-card img {
 			height: 150px;
 			object-fit: cover;
-		}
-
-		.footer {
-			background-color: var(--primary-color);
-			color: white;
-			padding: 2rem 0;
-		}
-
-		.footer a {
-			color: #f0e6ff;
-			text-decoration: none;
-		}
-
-		.dark-toggle {
-			cursor: pointer;
-		}
-
-		#google_translate_element select {
-			background-color: #fff;
-			border: 1px solid #ccc;
-			color: #333;
-			padding: 5px;
-			font-size: 1rem;
-			border-radius: 5px;
-		}
-
-		#google_translate_element {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		/*/* Hero Section */
-		.hero-carousel-section {
-			position: relative;
-			overflow: hidden;
-		}
-
-		.hero-slide {
-			min-height: 70vh;
-			background-size: cover;
-			background-position: center;
-			background-attachment: fixed;
-		}
-
-		.hero-btn {
-			transition: all 0.4s ease;
-			font-weight: 600;
-		}
-
-		.hero-btn:hover {
-			background-color: #0d6efd;
-			color: #fff;
-			transform: scale(1.05);
-			box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-		}
-
-		@media (max-width: 768px) {
-			.hero-slide {
-				text-align: center;
-				background-attachment: scroll;
-			}
 		}
 
 		/* Shop by Category Section */
@@ -374,76 +255,15 @@ session_destroy(); // Ends the session
 
 <body>
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light  px-3 py-2 shadow-sm" id="mainNavbar">
-		<a class="navbar-brand fw-bold" href="#">Shopelle</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
-			aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navMenu">
-			<!-- Search bar with filtering -->
-			<form class="search-bar mx-auto my-2 my-lg-0" onsubmit="event.preventDefault(); filterSearch()">
-				<input type="text" id="searchInput" placeholder="Search products..." aria-label="Search" />
-				<select id="filterSelect">
-					<option value="all">All Categories</option>
-					<option value="electronics">Electronics</option>
-					<option value="clothing">Clothing</option>
-					<option value="beauty">Beauty</option>
-					<option value="home">Home</option>
-				</select>
-				<button class="btn" type="submit"><i class="bi bi-search"></i></button>
-			</form>
-
-			<!-- Links and Actions -->
-			<ul class="navbar-nav ms-auto align-items-center">
-				<li class="nav-item mx-2"><a class="nav-link" href="#"><i class="bi bi-house-door"></i> Home</a></li>
-				<li class="nav-item mx-2"><a class="nav-link" href="loginRegister.php"><i class="bi bi-person-circle"></i>
-						Login</a></li>
-				<li class="nav-item mx-2"><a class="nav-link" href="cart.php"><i class="bi bi-cart"></i> Cart</a>
-				</li>
-				<li class="nav-item mx-2" id="google_translate_element"></li>
-				<li class="nav-item mx-2">
-					<button class="btn btn-outline-dark" id="darkToggleBtn" onclick="toggleDarkMode()"
-						title="Toggle Dark Mode"><i class="bi bi-moon-stars"></i></button>
-				</li>
-			</ul>
-		</div>
-	</nav>
+	<?php include 'includes/nav.php'; ?>
 
 	<!-- Placeholder for Search Results -->
 	<div class="container">
 		<h5 id="searchResult" class="text-muted"></h5>
 	</div>
 
-	<!-- Hero Section -->
-	<section class="hero-carousel-section">
-		<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-			<div class="carousel-inner">
-				<?php
-				$first = true;
-				while ($slide = $slides->fetch_assoc()) {
-					$active = $first ? 'active' : '';
-					echo "
-                <div class='carousel-item $active'>
-                    <div class='hero-slide d-flex align-items-center text-white img-fluid'
-                         style='background-image: url(\"Media/{$slide['background_image']}\");'>
-                        <div class='container text-start'>
-                            <div class='animate__animated animate__fadeInUp'>
-                                <h1 class='display-4 fw-bold' style='font-family: \"Playfair Display\", serif; color: {$slide['text_color']};'>{$slide['title']}</h1>
-                                <p class='lead' style='font-family: \"Open Sans\", sans-serif; color: {$slide['text_color']};'>{$slide['description']}</p>
-                                <a href='{$slide['button_link']}' class='btn btn-lg btn-light hero-btn mt-3'>{$slide['button_text']}</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>";
-					$first = false;
-				}
-				?>
-			</div>
-		</div>
-	</section>
+	<?php include 'includes/hero.php'; ?>
+
 
 	<!-- Shop by Category Section -->
 	<section class="category-section">
@@ -493,7 +313,7 @@ session_destroy(); // Ends the session
 	<section class="trending-section py-5 px-3 px-md-5" style=" background-color: #008080; color: white;">
 		<div class="container ">
 			<?php
-			
+
 			$setting = $conn->query("SELECT * FROM site_settings WHERE id = 1")->fetch_assoc();
 			$trendingText = $setting['trending_text'];
 			$trendingColor = $setting['trending_color'];
@@ -817,6 +637,43 @@ session_destroy(); // Ends the session
 		</div>
 	</section>
 
+	<section class="bg-warning py-5 text-dark">
+		<div class="container text-center">
+			<h2 class="mb-4">Why Shopelle?</h2>
+			<div class="row g-4">
+				<div class="col-md-3">
+					<i class="bi bi-truck display-5"></i>
+					<h5 class="mt-2">Fast Delivery</h5>
+					<p class="small">Get your items quickly and reliably.</p>
+				</div>
+				<div class="col-md-3">
+					<i class="bi bi-shield-lock display-5"></i>
+					<h5 class="mt-2">Secure Payments</h5>
+					<p class="small">Your data and money are safe with us.</p>
+				</div>
+				<div class="col-md-3">
+					<i class="bi bi-emoji-smile display-5"></i>
+					<h5 class="mt-2">Customer Support</h5>
+					<p class="small">Friendly support whenever you need it.</p>
+				</div>
+				<div class="col-md-3">
+					<i class="bi bi-tags display-5"></i>
+					<h5 class="mt-2">Great Deals</h5>
+					<p class="small">Save big on your favorite items every day.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<?php include 'includes/footer.php'; ?>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script>
+		// Toggle Dark Mode
+		document.querySelector('.dark-toggle').addEventListener('click', function() {
+			document.body.classList.toggle('dark-mode');
+		});
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
 		// Function to handle the newsletter subscription form submission
@@ -852,106 +709,18 @@ session_destroy(); // Ends the session
 	</script>
 
 
-
-
-
-
-	<section class="bg-warning py-5 text-dark">
-		<div class="container text-center">
-			<h2 class="mb-4">Why Shopelle?</h2>
-			<div class="row g-4">
-				<div class="col-md-3">
-					<i class="bi bi-truck display-5"></i>
-					<h5 class="mt-2">Fast Delivery</h5>
-					<p class="small">Get your items quickly and reliably.</p>
-				</div>
-				<div class="col-md-3">
-					<i class="bi bi-shield-lock display-5"></i>
-					<h5 class="mt-2">Secure Payments</h5>
-					<p class="small">Your data and money are safe with us.</p>
-				</div>
-				<div class="col-md-3">
-					<i class="bi bi-emoji-smile display-5"></i>
-					<h5 class="mt-2">Customer Support</h5>
-					<p class="small">Friendly support whenever you need it.</p>
-				</div>
-				<div class="col-md-3">
-					<i class="bi bi-tags display-5"></i>
-					<h5 class="mt-2">Great Deals</h5>
-					<p class="small">Save big on your favorite items every day.</p>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<footer class="text-light bg-dark pt-5 pb-4">
-		<div class="container text-md-left">
-			<div class="row text-md-left">
-
-				<!-- Brand Info -->
-				<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Shopelle</h5>
-					<p>Discover top deals, stylish picks, and curated finds all in one place. Shopelle brings convenience
-						and charm to your shopping journey.</p>
-				</div>
-
-				<!-- Useful Links -->
-				<div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
-					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Quick Links</h5>
-					<p><a href="checkout.php" class="text-light text-decoration-none">Home</a></p>
-					<p><a href="about.html" class="text-light text-decoration-none">About</a></p>
-					<p><a href="#" class="text-light text-decoration-none">Shop</a></p>
-					<p><a href="#" class="text-light text-decoration-none">Categories</a></p>
-					<p><a href="#" class="text-light text-decoration-none">Contact</a></p>
-				</div>
-
-				<!-- Contact Info -->
-				<div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
-					<p><i class="bi bi-house-fill me-2"></i> 123 Market Street, Cityville</p>
-					<p><i class="bi bi-envelope-fill me-2"></i> support@shopelle.com</p>
-					<p><i class="bi bi-telephone-fill me-2"></i> +123 456 7890</p>
-				</div>
-
-				<!-- Socials -->
-				<div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3">
-					<h5 class="text-uppercase mb-4 font-weight-bold text-info">Stay Connected</h5>
-					<p>Follow us on social platforms to get the latest updates and promotions.</p>
-					<div>
-						<a href="#" class="text-light me-3"><i class="bi bi-facebook fs-4"></i></a>
-						<a href="#" class="text-light me-3"><i class="bi bi-instagram fs-4"></i></a>
-						<a href="#" class="text-light me-3"><i class="bi bi-twitter fs-4"></i></a>
-						<a href="#" class="text-light me-3"><i class="bi bi-youtube fs-4"></i></a>
-					</div>
-				</div>
-
-			</div>
-
-			<!-- Divider -->
-			<hr class="mb-4 mt-4">
-
-			<!-- Copyright -->
-			<div class="row align-items-center">
-				<div class="col-md-7 col-lg-8">
-					<p class="text-light">© 2025 Shopelle. All Rights Reserved.</p>
-				</div>
-				<div class="col-md-5 col-lg-4">
-					<p class="text-end">
-						<a href="#" class="text-light text-decoration-none">Privacy Policy</a> |
-						<a href="#" class="text-light text-decoration-none">Terms</a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script>
-		// Toggle Dark Mode
-		document.querySelector('.dark-toggle').addEventListener('click', function() {
-			document.body.classList.toggle('dark-mode');
-		});
+	<!--Function triggers translation -->
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+			new google.translate.TranslateElement({
+				pageLanguage: 'en',
+				includedLanguages: 'af,en,zu,xh,st,tn,nso,ve,ts,nr,ss',
+				layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+			}, 'google_translate_element');
+		}
 	</script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 
 </html>
