@@ -97,17 +97,8 @@ $stmt->close();
             background: rgba(255, 255, 255, 0.2);
         }
 
-        h1,
-        h5,
-        p {
+        h1,h5,p {
             color: white;
-        }
-
-        .chart-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
         }
 
         #sidebar .nav-link {
