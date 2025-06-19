@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-include('Database/dbConnection.php'); // your DB connection file
+include('Database/dbConnection.php'); 
 // Handle role update form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id']) && isset($_POST['user_type'])) {
     $userId = (int)$_POST['user_id'];
