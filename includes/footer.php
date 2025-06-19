@@ -21,7 +21,6 @@
             <!-- Contact Info -->
             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-info">Contact</h5>
-                <p><i class="bi bi-house-fill me-2"></i> 123 Market Street, Cityville</p>
                 <p><i class="bi bi-envelope-fill me-2"></i> support@shopelle.com</p>
                 <p><i class="bi bi-telephone-fill me-2"></i> +123 456 7890</p>
             </div>
@@ -46,7 +45,7 @@
         <!-- Copyright -->
         <div class="row align-items-center">
             <div class="col-md-7 col-lg-8">
-                <p class="text-light">© &copy; <?php echo date('Y'); ?> Shopelle. All rights reserved.</p>
+                <p class="text-light">&copy; <?php echo date('Y'); ?> Shopelle. All rights reserved.</p>
             </div>
             <div class="col-md-5 col-lg-4">
                 <p class="text-end">
