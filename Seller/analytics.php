@@ -101,25 +101,27 @@ if (isset($_GET['action']) && $_GET['action'] === 'data') {
     </div>
 
     <script>
-        let salesChart;
+        let salesChart; // A global variable to store the chart instance
 
+        // Function to fetch chart data based on selected range
         function loadChart(range) {
-            fetch(`analytics.php?action=data&range=${range}`)
-                .then(response => response.json())
+            fetch(`analytics.php?action=data&range=${range}`) // Get data from backend with selected time range
+                .then(response => response.json()) // Convert the response to JSON
                 .then(chartData => {
-                    console.log(chartData); // Add this line
+                    console.log(chartData); // Debug: log chart data
 
                     const ctx = document.getElementById('salesChart').getContext('2d');
 
-                    if (salesChart) salesChart.destroy(); // destroy old chart
+                    if (salesChart) salesChart.destroy(); // Remove existing chart before drawing new one
 
+                    // Create new bar chart using Chart.js
                     salesChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: chartData.labels,
+                            labels: chartData.labels, // X-axis labels (e.g., days or months)
                             datasets: [{
                                 label: 'Sales in Rands',
-                                data: chartData.data,
+                                data: chartData.data, // Y-axis data (sales values)
                                 backgroundColor: 'rgba(255, 255, 255, 0.6)',
                                 borderColor: 'white',
                                 borderWidth: 2
@@ -131,10 +133,10 @@ if (isset($_GET['action']) && $_GET['action'] === 'data') {
                                     beginAtZero: true,
                                     ticks: {
                                         color: 'white'
-                                    },
+                                    }, // White y-axis labels
                                     grid: {
                                         color: 'rgba(255,255,255,0.2)'
-                                    }
+                                    } // Light grid lines
                                 },
                                 x: {
                                     ticks: {
@@ -149,19 +151,19 @@ if (isset($_GET['action']) && $_GET['action'] === 'data') {
                                 legend: {
                                     labels: {
                                         color: 'white'
-                                    }
+                                    } // White legend text
                                 }
                             }
                         }
                     });
                 })
-                .catch(error => console.error('Error loading sales data:', error));
+                .catch(error => console.error('Error loading sales data:', error)); // Error handling
         }
 
-        // Initial load
+        // Load chart initially using the selected month range
         loadChart(document.getElementById('monthRange').value);
 
-        // Event listener for dropdown
+        // Reloads chart when user changes the dropdown
         document.getElementById('monthRange').addEventListener('change', function() {
             loadChart(this.value);
         });
